@@ -3,7 +3,7 @@
 
 typedef struct{
     int id;
-    char* tipo;
+    char tipo[80];
     int talla;
     float precio;
 }Prenda;

@@ -3,8 +3,8 @@
 #include "prenda.h"
 
 void imprimirPrenda(Prenda p){
-    printf("id: %d",p.id);
-    printf("talla: %d",p.talla);
-    printf("tipo: %c",p.tipo);
-    printf("id: %2.f",p.precio);
+    printf("id: %d\n",p.id);
+    printf("talla: %d\n",p.talla);
+    printf("tipo: %s\n",p.tipo);
+    printf("precio: %.2f\n",p.precio);
 }
