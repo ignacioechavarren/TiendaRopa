@@ -2,6 +2,7 @@
 #include <string.h>
 #include "menu.h"
 #include "prenda.h"
+#include "marca.h"
 
 int main() {
 
