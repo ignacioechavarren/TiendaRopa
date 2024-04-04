@@ -7,9 +7,8 @@
 
 int main() {
 
-	printf("prueba \n");
-
 	Usuario u;
+	u.numPrendas=0;
 
 	Prenda p;
 	p.id = 1;

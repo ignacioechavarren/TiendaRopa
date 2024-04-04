@@ -12,7 +12,6 @@ void imprimirUsuario(Usuario usuario) {
 }
 
 void comprar(Usuario *usuario, Prenda prenda) {
-	usuario->numPrendas=0;
 	if (usuario->numPrendas < MAX_ITEMS) {
 		usuario->carrito[usuario->numPrendas] = prenda;
 		usuario->numPrendas++;
