@@ -11,13 +11,15 @@ typedef struct{
 	char contrasenya[MAX_CONTRASENYA_LENGTH];
 }Usuario;
 
-void setNombre(Usuario* usuario, const char* nombre);
+void imprimirUsuario(Usuario usuario);
+
+/*void setNombre(Usuario* usuario, const char* nombre);
 void setID(Usuario* usuario, int id);
 void setContrasenya(Usuario* usuario, const char* contrasenya);
 
 const char* getNombre(const Usuario* usuario);
 int getId(const Usuario* usuario);
-const char* getContrasenya(const Usuario* usuario);
+const char* getContrasenya(const Usuario* usuario);*/
 
 
 #endif /* USUARIO_H_ */
