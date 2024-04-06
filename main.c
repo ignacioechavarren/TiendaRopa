@@ -22,8 +22,8 @@ int main() {
 	p1.talla = 2;
 	strcpy(p1.tipo, "camiseta");
 
-	comprar(&u,p);
-	comprar(&u,p1);
+	anyadirAlCarrito(&u,p);
+	anyadirAlCarrito(&u,p1);
 	mostrarCarrito(u);
 
 	return 0;

@@ -18,7 +18,7 @@ typedef struct{
 }Usuario;
 
 void imprimirUsuario(Usuario usuario);
-void comprar(Usuario *usuario, Prenda prenda);//añadir al carrito
+void anyadirAlCarrito(Usuario *usuario, Prenda prenda);//añadir al carrito
 void mostrarCarrito(Usuario usuario);
 
 /*void setNombre(Usuario* usuario, const char* nombre);

@@ -11,7 +11,7 @@ void imprimirUsuario(Usuario usuario) {
 	printf("contraseña: %s\n", usuario.contrasenya);
 }
 
-void comprar(Usuario *usuario, Prenda prenda) {
+void anyadirAlCarrito(Usuario *usuario, Prenda prenda) {
 	if (usuario->numPrendas < MAX_ITEMS) {
 		usuario->carrito[usuario->numPrendas] = prenda;
 		usuario->numPrendas++;
@@ -23,12 +23,31 @@ void comprar(Usuario *usuario, Prenda prenda) {
 }
 
 void mostrarCarrito(Usuario usuario) {
+	int opcion;
 	if (usuario.numPrendas == 0) {
 		printf("el carrito esta vacio\n");
 	} else {
 		for (int i=0; i < usuario.numPrendas; i++) {
 			imprimirPrenda(usuario.carrito[i]);
 			printf("\n");
+		}
+		printf("comprar prendas del carrito (0. si/1. no): ");
+		fflush(stdout);
+		scanf("%d", &opcion);
+		if(opcion==0){
+			printf("procesando compra...\n");
+			FILE *archivo;
+			archivo = fopen("archivo.txt", "a");
+			for (int i=0; i < usuario.numPrendas; i++) {
+				char str[100];
+				sprintf(str, "%s - %.2f €\n",usuario.carrito[i].tipo, usuario.carrito[i].precio);
+				char* input = str;
+				fprintf(archivo, "%s", input);
+			}
+			fclose(archivo);
+			printf("compra almacenada\n");
+		}else{
+			printf("saliendo...\n");
 		}
 	}
 }
