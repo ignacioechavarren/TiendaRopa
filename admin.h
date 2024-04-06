@@ -16,4 +16,7 @@ typedef struct
 } Admin;
 
 
+void imprimirAdmin(Admin a);
+Admin pedirAdmin();
+
 #endif /* ADMIN_H_ */
