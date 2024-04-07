@@ -13,10 +13,11 @@ void infoCliente(Compra c){
 	imprimirUsuario(c.usu);
 }
 void descripcionPrenda(Compra c){
-	imprimirZapatoNombre(c.pren);
+	imprimirPrenda(c.pren);
+
 }
 
 void verVenta(Compra c){
-	printf("Usuario: %s, Zapato: %s, %i de %s de %i\n",c.usu.nombre, c.pren.id);
+	printf("Usuario: %s, Prenda: %s, %i de %s de %i\n",c.usu.nombre, c.pren.cod_pren);
 
 }
