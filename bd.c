@@ -1,4 +1,4 @@
-/*#include "bd.h"
+#include "bd.h"
 #include <stdio.h>
 #include <string.h>
 //int crearTablas(sqlite3 *db){
@@ -50,8 +50,8 @@ void obtenerAdmin(sqlite3 *db, char *nUsuario, Admin *a){
 	resul = sqlite3_step(stmt);
 	if(resul == SQLITE_ROW) {
 		strcpy(a->nUsuario, (char*)sqlite3_column_text(stmt, 0));
-		strcpy(a->contra, (char*)sqlite3_column_text(stmt, 1));
-		a->priv = sqlite3_column_int(stmt, 2);
+		strcpy(a->password, (char*)sqlite3_column_text(stmt, 1));
+
 	}else{
 		strcpy(a->nUsuario,"");
 		printf("Admin no encontrado\n");
@@ -143,7 +143,7 @@ void verPrendas(sqlite3 *db){
 		sqlite3_finalize(stmt);
 }
 
-/*void verComprasUsuario(sqlite3 *db, char *nombre){
+void verComprasUsuario(sqlite3 *db, char *nombre){
 	int resul;
 	sqlite3_stmt *stmt;
 	Compra c;
@@ -165,9 +165,9 @@ void verPrendas(sqlite3 *db){
 			resul = sqlite3_step(stmt);
 		}
 	sqlite3_finalize(stmt);
-}*/
+}
 
-/*void cambiarContrasenaUsuario(sqlite3 *db, char *nombre, char *contrasenya){
+void cambiarContrasenaUsuario(sqlite3 *db, char *nombre, char *contrasenya){
 	sqlite3_stmt *stmt;
 	char sql[100];
 
@@ -217,10 +217,8 @@ void verUsuarios(sqlite3 *db){
 	sqlite3_finalize(stmt);
 
 
-}/**/
-
-
-/*void verCarrito(sqlite3 *db){
+}
+void verCarrito(sqlite3 *db){
 	int resul;
 	sqlite3_stmt *stmt;
 	Venta v;
@@ -241,9 +239,9 @@ void verUsuarios(sqlite3 *db){
 			resul = sqlite3_step(stmt);
 		}
 	sqlite3_finalize(stmt);
-}*/
+}
 
-/*void anyadirPrenda(sqlite3 *db, int *id, char *tipo,  int talla, float precio){
+void anyadirPrenda(sqlite3 *db, int *id, char *tipo,  int talla, float precio){
 	sqlite3_stmt *stmt;
 	char sql[100];
 
@@ -253,7 +251,7 @@ void verUsuarios(sqlite3 *db){
 	sqlite3_finalize(stmt);
 }
 
-/*void modificarCarrito(sqlite3 *db, int stock, char *codarti){
+void modificarCarrito(sqlite3 *db, int stock, char *codarti){
 	sqlite3_stmt *stmt;
 	char sql[100];
 
@@ -261,4 +259,4 @@ void verUsuarios(sqlite3 *db){
 	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
 	sqlite3_step(stmt);
 	sqlite3_finalize(stmt);
-}*/
+}
