@@ -17,7 +17,7 @@ void descripcionPrenda(Compra c){
 
 }
 
-void verVenta(Compra c){
+void verCompra(Compra c){
 	printf("Usuario: %s, Prenda: %s, %i de %s de %i\n",c.usu.nombre, c.pren.cod_pren);
 
 }

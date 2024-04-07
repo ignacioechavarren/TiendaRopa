@@ -18,6 +18,8 @@ typedef struct{
 
 }Compra;
 
+
+
 void verCompra(Compra c);
 void descrpcionCliente(Compra c);
 void descripcionPrenda(Compra c);
