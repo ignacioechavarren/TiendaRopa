@@ -20,6 +20,7 @@ typedef struct{
 void imprimirUsuario(Usuario usuario);
 void anyadirAlCarrito(Usuario *usuario, Prenda prenda);//añadir al carrito
 void mostrarCarrito(Usuario usuario);
+void mostrarHistorial(Usuario usuario);
 
 /*void setNombre(Usuario* usuario, const char* nombre);
 void setID(Usuario* usuario, int id);

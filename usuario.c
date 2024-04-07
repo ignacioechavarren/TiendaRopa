@@ -27,29 +27,42 @@ void mostrarCarrito(Usuario usuario) {
 	if (usuario.numPrendas == 0) {
 		printf("el carrito esta vacio\n");
 	} else {
-		for (int i=0; i < usuario.numPrendas; i++) {
+		for (int i = 0; i < usuario.numPrendas; i++) {
 			imprimirPrenda(usuario.carrito[i]);
 			printf("\n");
 		}
 		printf("comprar prendas del carrito (0. si/1. no): ");
 		fflush(stdout);
 		scanf("%d", &opcion);
-		if(opcion==0){
+		if (opcion == 0) {
 			printf("procesando compra...\n");
 			FILE *archivo;
 			archivo = fopen("archivo.txt", "a");
-			for (int i=0; i < usuario.numPrendas; i++) {
+			for (int i = 0; i < usuario.numPrendas; i++) {
 				char str[100];
-				sprintf(str, "%s - %.2f €\n",usuario.carrito[i].tipo, usuario.carrito[i].precio);
-				char* input = str;
+				sprintf(str, "%s - %.2f €\n", usuario.carrito[i].tipo,
+						usuario.carrito[i].precio);
+				char *input = str;
 				fprintf(archivo, "%s", input);
 			}
 			fclose(archivo);
 			printf("compra almacenada\n");
-		}else{
+		} else {
 			printf("saliendo...\n");
 		}
 	}
+}
+
+void mostrarHistorial(Usuario usuario) {
+	FILE *archivo;
+	char c;
+	archivo = fopen("archivo.txt", "r");
+
+	while ((c = fgetc(archivo)) != EOF) {
+	        printf("%c", c);
+	    }
+
+	fclose(archivo);
 }
 
 /*void setNombre(Usuario* usuario, const char* nombre){

@@ -25,6 +25,7 @@ int main() {
 	anyadirAlCarrito(&u,p);
 	anyadirAlCarrito(&u,p1);
 	mostrarCarrito(u);
+	mostrarHistorial(u);
 
 	return 0;
 }
