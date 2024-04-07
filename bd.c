@@ -143,28 +143,41 @@ void verPrendas(sqlite3 *db){
 		sqlite3_finalize(stmt);
 }
 
+typedef struct {
+    struct {
+        int dia;
+        char mes[20];
+        int anyo;
+    } f_compra;
+    struct {
+        char nombre[50];
+    } usu;
+    struct {
+        char cod_pren[20];
+    } pren;
+} Compra;
+
 void verComprasUsuario(sqlite3 *db, char *nombre){
-	int resul;
-	sqlite3_stmt *stmt;
-	Compra c;
-	char sql[100];
+    int resul;
+    sqlite3_stmt *stmt;
+    Compra c;
+    char sql[100];
 
-	sprintf(sql,"select * from venta where usu = '%s'", nombre);
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
+    sprintf(sql, "select * from compra where usu = '%s'", nombre);
+    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
 
-	resul = sqlite3_step(stmt);
-		while(resul == SQLITE_ROW){
-			v.f_venta.dia = sqlite3_column_int(stmt, 0);
-			strcpy(v.f_venta.mes, (char*)sqlite3_column_text(stmt, 1));
-			v.f_venta.anyo = sqlite3_column_int(stmt, 2);
-			strcpy(v.usu.nombre, (char*)sqlite3_column_text(stmt, 3));
-			strcpy(v.zap.cod_zap, (char*)sqlite3_column_text(stmt, 4));
+    resul = sqlite3_step(stmt);
+    while (resul == SQLITE_ROW) {
+        c.f_compra.dia = sqlite3_column_int(stmt, 0);
+        strcpy(c.f_compra.mes, (char*)sqlite3_column_text(stmt, 1));
+        c.f_compra.anyo = sqlite3_column_int(stmt, 2);
+        strcpy(c.usu.nombre, (char*)sqlite3_column_text(stmt, 3));
+        strcpy(c.pren.cod_pren, (char*)sqlite3_column_text(stmt, 4));
 
-			verVenta(v);
-			//printf("%d %s\n",id,nom);
-			resul = sqlite3_step(stmt);
-		}
-	sqlite3_finalize(stmt);
+        verCompra(c);
+        resul = sqlite3_step(stmt);
+    }
+    sqlite3_finalize(stmt);
 }
 
 void cambiarContrasenaUsuario(sqlite3 *db, char *nombre, char *contrasenya){
@@ -221,7 +234,7 @@ void verUsuarios(sqlite3 *db){
 void verCarrito(sqlite3 *db){
 	int resul;
 	sqlite3_stmt *stmt;
-	Venta v;
+	Compra c;
 	char sql[100];
 
 	sprintf(sql,"select * from venta");
@@ -229,13 +242,13 @@ void verCarrito(sqlite3 *db){
 
 	resul = sqlite3_step(stmt);
 		while(resul == SQLITE_ROW){
-			v.f_venta.dia = sqlite3_column_int(stmt, 0);
-			strcpy(v.f_venta.mes, (char*)sqlite3_column_text(stmt, 1));
-			v.f_venta.anyo = sqlite3_column_int(stmt, 2);
-			strcpy(v.usu.nombre, (char*)sqlite3_column_text(stmt, 3));
-			strcpy(v.zap.cod_zap, (char*)sqlite3_column_text(stmt, 4));
+			c.f_compra.dia = sqlite3_column_int(stmt, 0);
+			strcpy(c.f_compra.mes, (char*)sqlite3_column_text(stmt, 1));
+			c.f_compra.anyo = sqlite3_column_int(stmt, 2);
+			strcpy(c.usu.nombre, (char*)sqlite3_column_text(stmt, 3));
+			strcpy(c.pren.cod_pren, (char*)sqlite3_column_text(stmt, 4));
 
-			verVenta(v);
+			verCompra(c);
 			resul = sqlite3_step(stmt);
 		}
 	sqlite3_finalize(stmt);
