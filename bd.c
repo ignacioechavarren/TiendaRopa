@@ -14,7 +14,7 @@ void crearTablas(sqlite3 *db){
 	char sql3[] = "create table prenda(id int, tipo varchar(80), talla int, precio float )";
 	//creo que esta sobra no? 
     // igual poner algo de carrito o así
-    //char sql4[] = "create table venta(dia int, mes varchar(15), anyo int, usu varchar(20), codarti varchar(20))";
+    char sql4[] = "create table venta(dia int, mes varchar(15), anyo int, usu varchar(20), codarti varchar(20))";
 
 
 	sqlite3_prepare_v2(db, sql1, strlen(sql1), &stmt1, NULL) ;
