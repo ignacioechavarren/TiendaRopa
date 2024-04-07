@@ -175,7 +175,9 @@ void verComprasUsuario(sqlite3 *db, char *nombre){
         strcpy(c.usu.nombre, (char*)sqlite3_column_text(stmt, 3));
         strcpy(c.pren.cod_pren, (char*)sqlite3_column_text(stmt, 4));
 
+
         verCompra(c);
+
         resul = sqlite3_step(stmt);
     }
     sqlite3_finalize(stmt);
@@ -250,6 +252,7 @@ void verCarrito(sqlite3 *db){
 			strcpy(c.pren.cod_pren, (char*)sqlite3_column_text(stmt, 4));
 
 			verCompra(c);
+
 			resul = sqlite3_step(stmt);
 		}
 	sqlite3_finalize(stmt);
