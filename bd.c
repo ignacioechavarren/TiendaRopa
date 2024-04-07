@@ -1,4 +1,4 @@
-#include "bd.h"
+/*#include "bd.h"
 #include <stdio.h>
 #include <string.h>
 //int crearTablas(sqlite3 *db){
@@ -40,7 +40,6 @@ void crearTablas(sqlite3 *db){
 
 
 }
-//----------------------------------------------------------------------------------------------------------------------------------------------------
 
 void obtenerAdmin(sqlite3 *db, char *nUsuario, Admin *a){
 	sqlite3_stmt *stmt;
@@ -168,7 +167,7 @@ void verPrendas(sqlite3 *db){
 	sqlite3_finalize(stmt);
 }*/
 
-void cambiarContrasenaUsuario(sqlite3 *db, char *nombre, char *contrasenya){
+/*void cambiarContrasenaUsuario(sqlite3 *db, char *nombre, char *contrasenya){
 	sqlite3_stmt *stmt;
 	char sql[100];
 
@@ -218,7 +217,7 @@ void verUsuarios(sqlite3 *db){
 	sqlite3_finalize(stmt);
 
 
-}
+}/**/
 
 
 /*void verCarrito(sqlite3 *db){
@@ -244,7 +243,7 @@ void verUsuarios(sqlite3 *db){
 	sqlite3_finalize(stmt);
 }*/
 
-void anyadirPrenda(sqlite3 *db, int *id, char *tipo,  int talla, float precio){
+/*void anyadirPrenda(sqlite3 *db, int *id, char *tipo,  int talla, float precio){
 	sqlite3_stmt *stmt;
 	char sql[100];
 
