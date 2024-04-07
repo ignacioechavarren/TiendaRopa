@@ -1,7 +1,7 @@
 #include "bd.h"
 #include <stdio.h>
 #include <string.h>
-#include "compra.h"
+
 //int crearTablas(sqlite3 *db){
 void crearTablas(sqlite3 *db){
 	sqlite3_stmt *stmt1;

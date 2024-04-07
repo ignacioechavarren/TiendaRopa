@@ -9,6 +9,7 @@
 #include "compra.h"
 #include <stdio.h>
 
+
 void infoCliente(Compra c){
 	imprimirUsuario(c.usu);
 }
@@ -18,6 +19,6 @@ void descripcionPrenda(Compra c){
 }
 
 void verCompra(Compra c){
-	printf("Usuario: %s, Prenda: %s, %i de %s de %i\n",c.usu.nombre, c.pren.cod_pren);
+	  printf("Usuario: %s, Prenda ID: %d\n", c.usu.nombre, c.pren.id);
 
 }
