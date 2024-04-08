@@ -9,7 +9,7 @@ void menuPrincipal(Usuario usuario, sqlite3 *db);
 void inicioCliente(Usuario usuario, sqlite3 *db);
 void inicioAdmin(Usuario usuario, sqlite3 *db);
 void menuCliente(Usuario usuario, sqlite3 *db);
-void menuAdmin();
+void menuAdmin(Usuario usuario, sqlite3 *db);
 
 
 #endif /* MENU_H_ */

@@ -69,10 +69,10 @@ void inicioAdmin(Usuario usuario, sqlite3 *db) {
 		switch (opcion) {
 		case 0:
 			//llamada al metodo de registro
-			menuAdmin();
+			menuAdmin(usuario, db);
 		case 1:
 			//llamada al metodo de inicio de sesion
-			menuAdmin();
+			menuAdmin(usuario, db);
 		case 2:
 			menuPrincipal(usuario, db);
 		default:
@@ -85,16 +85,16 @@ void menuAdmin(Usuario usuario, sqlite3 *db) {
 	int opcion;
 	printf("\n------------\nMENU ADMIN\n------------\n");
 	printf(
-			"Elija una opcion(0/1/2/3/4/5/6):\n0.Añadir articulo\n1.Eliminar articulo\n2.modificar articulo\n3.Ver carrito\n4.Ver historial de compras\n5.Ver articulos por tipo\n6.Cerrar sesion\n");
+			"Elija una opcion(0/1/2/3/4/5/6):\n0.Añadir prenda\n1.Eliminar prenda\n2.modificar articulo\n3.Ver carrito\n4.Ver historial de compras\n5.Ver articulos por tipo\n6.Cerrar sesion\n");
 	fflush(stdout);
 
 	scanf("%d", &opcion);
 	do {
 		switch (opcion) {
 		case 0:
-
+		//	anyadirPrenda();
 		case 1:
-
+		//	eliminarPrenda();
 		case 2:
 
 		case 3:
