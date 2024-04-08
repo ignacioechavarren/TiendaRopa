@@ -5,6 +5,8 @@
 #include "bd.h"
 #include "sqlite3.h"
 
+sqlite3 *db;
+int result;
 
 void menuPrincipal(Usuario usuario, sqlite3 *db) {
 	int opcion;
@@ -17,9 +19,9 @@ void menuPrincipal(Usuario usuario, sqlite3 *db) {
 	do {
 		switch (opcion) {
 		case 0:
-			inicioCliente(usuario,db);
+			inicioCliente(usuario, db);
 		case 1:
-			inicioAdmin(usuario,db);
+			inicioAdmin(usuario, db);
 		case 2:
 			printf("saliendo...");
 			exit(0);
@@ -42,12 +44,12 @@ void inicioCliente(Usuario usuario, sqlite3 *db) {
 		switch (opcion) {
 		case 0:
 			//llamada al metodo de registro
-			menuCliente(usuario,db);
+			menuCliente(usuario, db);
 		case 1:
 			//llamada al metodo de inicio de sesion
-			menuCliente(usuario,db);
+			menuCliente(usuario, db);
 		case 2:
-			menuPrincipal(usuario,db);
+			menuPrincipal(usuario, db);
 		default:
 			printf("introduzca un numero entre 0 y 2\n");
 		}
@@ -111,7 +113,13 @@ void menuAdmin(Usuario usuario, sqlite3 *db) {
 }
 
 void menuCliente(Usuario usuario, sqlite3 *db) {
-	Prenda prenda;
+	//prenda de prueba mientras no pueda obtener una de la bbdd
+	Prenda p;
+	p.id = 2;
+	p.precio = 49.00;
+	p.talla = 32;
+	strcpy(p.tipo, "pantalon");
+
 	int opcion;
 	printf("\n------------\nMENU CLIENTE\n------------\n");
 	printf(
@@ -120,24 +128,26 @@ void menuCliente(Usuario usuario, sqlite3 *db) {
 
 	scanf("%d", &opcion);
 
-		switch (opcion) {
-		case 0:
-			verPrendas(db);
-			//scanf
-			anyadirAlCarrito(&usuario, prenda);
-			menuCliente(usuario,db);
-		case 1:
-			mostrarCarrito(usuario);
-			menuCliente(usuario,db);
-		case 2:
-			mostrarHistorial(usuario);
-			menuCliente(usuario,db);
-		case 3:
-			menuPrincipal(usuario,db);
-			break;
-		default:
-			printf("introduzca un numero entre 0 y 3\n");
-		}
+	switch (opcion) {
+	case 0:
+		result = sqlite3_open("DatosTienda", &db);
+		result = verPrendas(db);
+		result = sqlite3_close(db);
+		//obtener prenda de la bbdd
+		anyadirAlCarrito(&usuario, p);
+		menuCliente(usuario, db);
+	case 1:
+		mostrarCarrito(usuario);
+		menuCliente(usuario, db);
+	case 2:
+		mostrarHistorial(usuario);
+		menuCliente(usuario, db);
+	case 3:
+		menuPrincipal(usuario, db);
+		break;
+	default:
+		printf("introduzca un numero entre 0 y 3\n");
+	}
 
 }
 

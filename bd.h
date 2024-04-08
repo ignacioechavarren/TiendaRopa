@@ -14,7 +14,7 @@ void obtenerUsuario(sqlite3 *db, char *nombre, Usuario *u);
 void obtenerPrenda(sqlite3 *db, int *id, Prenda *p);
 void registrarUsuario(sqlite3 *db, char *nombre, char *contrasenya);
 void registrarAdmin(sqlite3 *db, char *nUsuario, char *password);
-void verPrendas(sqlite3 *db);
+int verPrendas(sqlite3 *db);
 void cambiarContrasenaUsuario(sqlite3 *db, char *nombre, char *contrasenya);
 void cambiarContrasenaAdmin(sqlite3 *db, char *nUsuario, char *password);
 void eliminarUsuario(sqlite3 *db, char *nombre);

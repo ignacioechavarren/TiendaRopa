@@ -9,27 +9,9 @@
 int main() {
 
 	Usuario u;
-	u.numPrendas=0;
-
-	Prenda p;
-	p.id = 1;
-	p.precio = 2.555;
-	p.talla = 44;
-	strcpy(p.tipo, "pantalon");
-
-	Prenda p1;
-	p1.id = 2;
-	p1.precio = 90.9;
-	p1.talla = 2;
-	strcpy(p1.tipo, "camiseta");
-
+	u.numPrendas = 0;
 	sqlite3 *db;
-
-	/**anyadirAlCarrito(&u,p);
-	anyadirAlCarrito(&u,p1);
-	mostrarCarrito(u);
-	mostrarHistorial(u);**/
-	menuCliente(u,db);
+	menuPrincipal(u, db);
 
 	return 0;
 }
