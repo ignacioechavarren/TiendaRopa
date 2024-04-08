@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "menu.h"
+#include "usuario.h"
 
-void menuPrincipal() {
+
+void menuPrincipal(Usuario usuario) {
 	int opcion;
 	printf("\n-------------\nTIENDA DEUSTO\n-------------\n");
 	printf(
@@ -13,9 +15,9 @@ void menuPrincipal() {
 	do {
 		switch (opcion) {
 		case 0:
-			inicioCliente();
+			inicioCliente(usuario);
 		case 1:
-			inicioAdmin();
+			inicioAdmin(usuario);
 		case 2:
 			printf("saliendo...");
 			break;
@@ -25,7 +27,7 @@ void menuPrincipal() {
 	} while (opcion != 2);
 }
 
-void inicioCliente() {
+void inicioCliente(Usuario usuario) {
 
 	int opcion;
 	printf("\n--------------\nINICIO CLIENTE\n--------------\n");
@@ -38,19 +40,19 @@ void inicioCliente() {
 		switch (opcion) {
 		case 0:
 			//llamada al metodo de registro
-			menuCliente();
+			menuCliente(usuario);
 		case 1:
 			//llamada al metodo de inicio de sesion
-			menuCliente();
+			menuCliente(usuario);
 		case 2:
-			menuPrincipal();
+			menuPrincipal(usuario);
 		default:
 			printf("introduzca un numero entre 0 y 2\n");
 		}
 	} while (opcion != 2);
 }
 
-void inicioAdmin() {
+void inicioAdmin(Usuario usuario) {
 
 	int opcion;
 	printf("\n------------\nINICIO ADMIN\n------------\n");
@@ -68,14 +70,14 @@ void inicioAdmin() {
 			//llamada al metodo de inicio de sesion
 			menuAdmin();
 		case 2:
-			menuPrincipal();
+			menuPrincipal(usuario);
 		default:
 			printf("introduzca un numero entre 0 y 2\n");
 		}
 	} while (opcion != 2);
 }
 
-void menuAdmin() {
+void menuAdmin(Usuario usuario) {
 	int opcion;
 	printf("\n------------\nMENU ADMIN\n------------\n");
 	printf(
@@ -98,7 +100,7 @@ void menuAdmin() {
 		case 5:
 
 		case 6:
-			menuPrincipal();
+			menuPrincipal(usuario);
 		default:
 			printf("introduzca un numero entre 0 y 6\n");
 		}
@@ -106,28 +108,32 @@ void menuAdmin() {
 
 }
 
-void menuCliente() {
+void menuCliente(Usuario usuario) {
+	Prenda prenda;
 	int opcion;
 	printf("\n------------\nMENU CLIENTE\n------------\n");
 	printf(
-			"Elija una opcion(0/1/2/3):\n0.Comprar\n1.Historial de compras\n2.Carrito\n3.Cerrar Sesion\n");
+			"Elija una opcion(0/1/2/3):\n0.Comprar\n1.Carrito\n2.Historial de compra\n3.Cerrar Sesion\n");
 	fflush(stdout);
 
 	scanf("%d", &opcion);
-	do {
+
 		switch (opcion) {
 		case 0:
-
+			anyadirAlCarrito(&usuario, prenda);
+			menuCliente(usuario);
 		case 1:
-
+			mostrarCarrito(usuario);
+			menuCliente(usuario);
 		case 2:
-
+			mostrarHistorial(usuario);
+			menuCliente(usuario);
 		case 3:
-			menuPrincipal();
+			menuPrincipal(usuario);
+			break;
 		default:
 			printf("introduzca un numero entre 0 y 3\n");
 		}
-	} while (opcion != 3);
 
 }
 

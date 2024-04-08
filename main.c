@@ -22,10 +22,11 @@ int main() {
 	p1.talla = 2;
 	strcpy(p1.tipo, "camiseta");
 
-	anyadirAlCarrito(&u,p);
+	/**anyadirAlCarrito(&u,p);
 	anyadirAlCarrito(&u,p1);
 	mostrarCarrito(u);
-	mostrarHistorial(u);
+	mostrarHistorial(u);**/
+	menuCliente(u);
 
 	return 0;
 }
