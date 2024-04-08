@@ -158,31 +158,6 @@ typedef struct {
     } pren;
 } Compra;
 
-void verComprasUsuario(sqlite3 *db, char *nombre){
-    int resul;
-    sqlite3_stmt *stmt;
-    Compra c;
-    char sql[100];
-
-    sprintf(sql, "select * from compra where usu = '%s'", nombre);
-    sqlite3_prepare_v2(db, sql, -1, &stmt, NULL);
-
-    resul = sqlite3_step(stmt);
-    while (resul == SQLITE_ROW) {
-        c.f_compra.dia = sqlite3_column_int(stmt, 0);
-        strcpy(c.f_compra.mes, (char*)sqlite3_column_text(stmt, 1));
-        c.f_compra.anyo = sqlite3_column_int(stmt, 2);
-        strcpy(c.usu.nombre, (char*)sqlite3_column_text(stmt, 3));
-        strcpy(c.pren.cod_pren, (char*)sqlite3_column_text(stmt, 4));
-
-
-        verCompra(c);
-
-        resul = sqlite3_step(stmt);
-    }
-    sqlite3_finalize(stmt);
-}
-
 void cambiarContrasenaUsuario(sqlite3 *db, char *nombre, char *contrasenya){
 	sqlite3_stmt *stmt;
 	char sql[100];
@@ -234,29 +209,7 @@ void verUsuarios(sqlite3 *db){
 
 
 }
-void verCarrito(sqlite3 *db){
-	int resul;
-	sqlite3_stmt *stmt;
-	Compra c;
-	char sql[100];
 
-	sprintf(sql,"select * from venta");
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
-
-	resul = sqlite3_step(stmt);
-		while(resul == SQLITE_ROW){
-			c.f_compra.dia = sqlite3_column_int(stmt, 0);
-			strcpy(c.f_compra.mes, (char*)sqlite3_column_text(stmt, 1));
-			c.f_compra.anyo = sqlite3_column_int(stmt, 2);
-			strcpy(c.usu.nombre, (char*)sqlite3_column_text(stmt, 3));
-			strcpy(c.pren.cod_pren, (char*)sqlite3_column_text(stmt, 4));
-
-			verCompra(c);
-
-			resul = sqlite3_step(stmt);
-		}
-	sqlite3_finalize(stmt);
-}
 
 void anyadirPrenda(sqlite3 *db, int *id, char *tipo,  int talla, float precio){
 	sqlite3_stmt *stmt;
@@ -268,12 +221,3 @@ void anyadirPrenda(sqlite3 *db, int *id, char *tipo,  int talla, float precio){
 	sqlite3_finalize(stmt);
 }
 
-void modificarCarrito(sqlite3 *db, int stock, char *codarti){
-	sqlite3_stmt *stmt;
-	char sql[100];
-
-	sprintf(sql, "update zapato set stock='%i' where cod_zap='%s'", stock, codarti);
-	sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) ;
-	sqlite3_step(stmt);
-	sqlite3_finalize(stmt);
-}
