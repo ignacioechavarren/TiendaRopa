@@ -20,7 +20,7 @@ void cambiarContrasenaAdmin(sqlite3 *db, char *nUsuario, char *password);
 void eliminarUsuario(sqlite3 *db, char *nombre);
 void verUsuarios(sqlite3 *db);
 void anyadirPrenda(sqlite3 *db, int *id, char *tipo,  int talla, float precio);
-
+void eliminarPrenda(sqlite3 *db, int *id);
 
 
 
