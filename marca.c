@@ -14,3 +14,13 @@ void imprimirMarca(Marca m){
     printf("nombre: %s\n",m.nombre);
 
 }
+
+void modificarMarca(Marca *m, int id, char nombre){
+    if(id < 0){
+		printf("ERROR! Inserte un número positivo");
+	} else {
+		m->id = id;
+	}
+     m->nombre = nombre;
+	
+}

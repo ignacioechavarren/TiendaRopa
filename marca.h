@@ -15,5 +15,6 @@ typedef struct{
 }Marca;
 
 void imprimirMarca(Marca m);
+void modificarMarca(Marca *m, int id, char nombre);
 
 #endif /* MARCA_H_ */

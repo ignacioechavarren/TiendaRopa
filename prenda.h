@@ -9,5 +9,7 @@ typedef struct{
 }Prenda;
 
 void imprimirPrenda(Prenda p);
+void modificarPrecio(Prenda *p, float precio);
+Prenda pedirPrenda();
 
 #endif
