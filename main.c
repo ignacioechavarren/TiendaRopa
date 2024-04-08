@@ -4,6 +4,7 @@
 #include "prenda.h"
 #include "marca.h"
 #include "usuario.h"
+#include "bd.h"
 
 int main() {
 
@@ -22,11 +23,13 @@ int main() {
 	p1.talla = 2;
 	strcpy(p1.tipo, "camiseta");
 
+	sqlite3 *db;
+
 	/**anyadirAlCarrito(&u,p);
 	anyadirAlCarrito(&u,p1);
 	mostrarCarrito(u);
 	mostrarHistorial(u);**/
-	menuCliente(u);
+	menuCliente(u,db);
 
 	return 0;
 }

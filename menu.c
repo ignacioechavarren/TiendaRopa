@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include "menu.h"
 #include "usuario.h"
+#include "bd.h"
+#include "sqlite3.h"
 
 
-void menuPrincipal(Usuario usuario) {
+void menuPrincipal(Usuario usuario, sqlite3 *db) {
 	int opcion;
 	printf("\n-------------\nTIENDA DEUSTO\n-------------\n");
 	printf(
@@ -15,19 +17,19 @@ void menuPrincipal(Usuario usuario) {
 	do {
 		switch (opcion) {
 		case 0:
-			inicioCliente(usuario);
+			inicioCliente(usuario,db);
 		case 1:
-			inicioAdmin(usuario);
+			inicioAdmin(usuario,db);
 		case 2:
 			printf("saliendo...");
-			break;
+			exit(0);
 		default:
 			printf("introduzca un numero entre 0 y 2\n");
 		}
 	} while (opcion != 2);
 }
 
-void inicioCliente(Usuario usuario) {
+void inicioCliente(Usuario usuario, sqlite3 *db) {
 
 	int opcion;
 	printf("\n--------------\nINICIO CLIENTE\n--------------\n");
@@ -40,19 +42,19 @@ void inicioCliente(Usuario usuario) {
 		switch (opcion) {
 		case 0:
 			//llamada al metodo de registro
-			menuCliente(usuario);
+			menuCliente(usuario,db);
 		case 1:
 			//llamada al metodo de inicio de sesion
-			menuCliente(usuario);
+			menuCliente(usuario,db);
 		case 2:
-			menuPrincipal(usuario);
+			menuPrincipal(usuario,db);
 		default:
 			printf("introduzca un numero entre 0 y 2\n");
 		}
 	} while (opcion != 2);
 }
 
-void inicioAdmin(Usuario usuario) {
+void inicioAdmin(Usuario usuario, sqlite3 *db) {
 
 	int opcion;
 	printf("\n------------\nINICIO ADMIN\n------------\n");
@@ -70,14 +72,14 @@ void inicioAdmin(Usuario usuario) {
 			//llamada al metodo de inicio de sesion
 			menuAdmin();
 		case 2:
-			menuPrincipal(usuario);
+			menuPrincipal(usuario, db);
 		default:
 			printf("introduzca un numero entre 0 y 2\n");
 		}
 	} while (opcion != 2);
 }
 
-void menuAdmin(Usuario usuario) {
+void menuAdmin(Usuario usuario, sqlite3 *db) {
 	int opcion;
 	printf("\n------------\nMENU ADMIN\n------------\n");
 	printf(
@@ -100,7 +102,7 @@ void menuAdmin(Usuario usuario) {
 		case 5:
 
 		case 6:
-			menuPrincipal(usuario);
+			menuPrincipal(usuario, db);
 		default:
 			printf("introduzca un numero entre 0 y 6\n");
 		}
@@ -108,7 +110,7 @@ void menuAdmin(Usuario usuario) {
 
 }
 
-void menuCliente(Usuario usuario) {
+void menuCliente(Usuario usuario, sqlite3 *db) {
 	Prenda prenda;
 	int opcion;
 	printf("\n------------\nMENU CLIENTE\n------------\n");
@@ -120,16 +122,18 @@ void menuCliente(Usuario usuario) {
 
 		switch (opcion) {
 		case 0:
+			//verPrendas(db);
+			//scanf
 			anyadirAlCarrito(&usuario, prenda);
-			menuCliente(usuario);
+			menuCliente(usuario,db);
 		case 1:
 			mostrarCarrito(usuario);
-			menuCliente(usuario);
+			menuCliente(usuario,db);
 		case 2:
 			mostrarHistorial(usuario);
-			menuCliente(usuario);
+			menuCliente(usuario,db);
 		case 3:
-			menuPrincipal(usuario);
+			menuPrincipal(usuario,db);
 			break;
 		default:
 			printf("introduzca un numero entre 0 y 3\n");

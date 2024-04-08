@@ -2,11 +2,13 @@
 #define MENU_H_
 
 #include "usuario.h"
+#include "bd.h"
+#include "sqlite3.h"
 
-void menuPrincipal(Usuario usuario);
-void inicioCliente(Usuario usuario);
-void inicioAdmin(Usuario usuario);
-void menuCliente(Usuario usuario);
+void menuPrincipal(Usuario usuario, sqlite3 *db);
+void inicioCliente(Usuario usuario, sqlite3 *db);
+void inicioAdmin(Usuario usuario, sqlite3 *db);
+void menuCliente(Usuario usuario, sqlite3 *db);
 void menuAdmin();
 
 
