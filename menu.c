@@ -122,7 +122,7 @@ void menuCliente(Usuario usuario, sqlite3 *db) {
 
 		switch (opcion) {
 		case 0:
-			//verPrendas(db);
+			verPrendas(db);
 			//scanf
 			anyadirAlCarrito(&usuario, prenda);
 			menuCliente(usuario,db);
